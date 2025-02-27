@@ -1,8 +1,11 @@
+import allure
 import requests
-from data import Url
+from curl import Url
 
 
 class AuthMethods:
-    def login(self, body):
+    @staticmethod
+    @allure.step("Авторизация пользователя")
+    def login(body):
         response = requests.post(f'{Url.BASE_URL}{Url.LOGIN_URL}', json=body)
         return response
